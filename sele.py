@@ -34,6 +34,6 @@ for p in Link:
 # print(len(link))
 # print(len(head))
 
-w = pd.DataFrame({'Heading': Head, 'Link': Link, 'Content': Content})
-w.to_csv('mediumtech.csv', index=False)
-print(w)
+file = pd.DataFrame({'Heading': Head, 'Link': Link, 'Content': Content})
+file.to_csv('mediumtech.csv', index=False)
+print(file)
