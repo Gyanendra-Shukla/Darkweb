@@ -1,0 +1,91 @@
+GET _cat/nodes?v
+GET _cat/shards?v
+GET _cluster/health
+
+
+
+
+PUT student
+
+
+
+
+
+PUT student 
+{
+  "settings":{
+    "number_of_shards":2,
+    "number_of_replicas":2
+  }
+}
+
+
+
+
+DELETE student
+
+POST student/_doc
+{
+  "name":"Rahul",
+  "age":25
+}
+
+
+
+
+POST student/_doc/75683
+{
+  "name":"Rahul",
+  "age":25
+}
+
+
+
+
+DELETE student/_doc/75683
+
+
+
+
+
+POST student/_doc
+{
+  "name":"Mohit",
+  "age":21
+}
+
+
+
+
+GET student/_search
+{
+  "query":{
+    "match_all": {}
+  }
+}
+
+
+
+
+POST student/_update/FFPvCYUBHOTvHh0_IhGL
+{
+  "doc":{
+    "age":5,
+    "lastname":"sharma"
+  }
+}
+
+
+
+
+POST student/_update/FFPvCYUBHOTvHh0_IhGL
+{
+  "script":{
+    "source": """
+    if(ctx._source.age<=0){
+      ctx.op='noop'
+    }else{
+      ctx._source.age--;
+    } """
+  }
+}
